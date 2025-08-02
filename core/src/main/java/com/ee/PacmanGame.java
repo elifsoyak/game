@@ -17,9 +17,9 @@ public class PacmanGame extends ScreenAdapter {
     private Pellet[][] pellets;
     private int pelletsLeft;
 
-    private static final int TILE_SIZE = 32;
-    private static final int MAP_WIDTH = 10;
-    private static final int MAP_HEIGHT = 10;
+    private static final int TILE_SIZE = 128;
+    private static final int MAP_WIDTH = 20;
+    private static final int MAP_HEIGHT = 15;
 
     @Override
     public void show() {

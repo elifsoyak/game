@@ -11,7 +11,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
         public Pellet(float x, float y) {
             texture = new Texture("ui/boss-sprite.png");
-            setBounds(x, y, 8, 8);
+            setBounds(x, y, 32, 32);
         }
 
         @Override

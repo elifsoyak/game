@@ -11,11 +11,11 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 // Player Actor
 public class Player extends Actor {
     Texture texture;
-    float speed = 100;
+    float speed = 200;
 
         public Player(float x, float y) {
             texture = new Texture("ui/mc-sprite.png");
-            setBounds(x, y, 32, 32);
+            setBounds(x, y, 128, 128);
         }
 
         @Override
