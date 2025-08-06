@@ -1,4 +1,4 @@
-package com.ee;
+package com.ee.pacman;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;

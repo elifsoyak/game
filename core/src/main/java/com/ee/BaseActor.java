@@ -10,7 +10,6 @@ import com.badlogic.gdx.graphics.g2d.Animation.PlayMode;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.*;
-import com.badlogic.gdx.math.Intersector.MinimumTranslationVector;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Group;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -22,19 +21,6 @@ import java.util.ArrayList;
 
 /**
  *  This is directly from the book Java Game Development with LibGDX written by Lee Stemkoski
- */
-
-/***
- *
- * This class serves as one of the 4 main parts involved with creating a game.
- *
- * From my understanding, this entire class is based around the libGDX classes such as the Stage class, Actor Class,
- * Animation class, Screen Class, and a few more. It provides a multitude of a bunch of different features that template
- * the creation ofd
- * All of these classes function piggyback off of each other to create the gui and functionality of each image.
- *
- * The base actor class is extending the Group Class that is provided by the libGDX library. This class helps layer
- * images on top of each other Which is important for setting each actor in the correct position.
  */
 
 /**
@@ -50,12 +36,6 @@ public class BaseActor extends Group
     private Animation<TextureRegion> animation;
     private float elapsedTime;
     private boolean animationPaused;
-
-    private Vector2 velocityVec;
-    private Vector2 accelerationVec;
-    private float acceleration;
-    private float maxSpeed;
-    private float deceleration;
 
     private Polygon boundaryPolygon;
 
@@ -75,13 +55,6 @@ public class BaseActor extends Group
         animation = null;
         elapsedTime = 0;
         animationPaused = false;
-
-        // initialize physics data
-        velocityVec = new Vector2(0,0);
-        accelerationVec = new Vector2(0,0);
-        acceleration = 0;
-        maxSpeed = 1000;
-        deceleration = 0;
 
         boundaryPolygon = null;
     }
@@ -254,69 +227,6 @@ public class BaseActor extends Group
     public void setOpacity(float opacity)
     {
         this.getColor().a = opacity;
-    }
- 
-
-    /**
-     *  Set maximum speed of this object.
-     *  @param ms Maximum speed of this object in (pixels/second).
-     */
-    public void setMaxSpeed(float ms)
-    {
-        maxSpeed = ms;
-    }
-
-    /**
-     *  Set the speed of movement (in pixels/second) in current direction.
-     *  If current speed is zero (direction is undefined), direction will be set to 0 degrees.
-     *  @param speed of movement (pixels/second)
-     */
-    public void setSpeed(float speed)
-    {
-        // if length is zero, then assume motion angle is zero degrees
-        if (velocityVec.len() == 0)
-            velocityVec.set(speed, 0);
-        else
-            velocityVec.setLength(speed);
-    }
-
-    /**
-     *  Calculates the speed of movement (in pixels/second).
-     *  @return speed of movement (pixels/second)
-     */
-    public float getSpeed()
-    {
-        return velocityVec.len();
-    }
-
-    /**
-     *  Determines if this object is moving (if speed is greater than zero).
-     *  @return false when speed is zero, true otherwise
-     */
-    public boolean isMoving()
-    {
-        return (getSpeed() > 0);
-    }
-
-    /**
-     *  Sets the angle of motion (in degrees).
-     *  If current speed is zero, this will have no effect.
-     *  @param angle of motion (degrees)
-     */
-    public void setMotionAngle(float angle)
-    {
-        velocityVec.setAngle(angle);
-    }
-
-    /**
-     *  Get the angle of motion (in degrees), calculated from the velocity vector.
-     *  <br>
-     *  To align actor image angle with motion angle, use <code>setRotation( getMotionAngle() )</code>.
-     *  @return angle of motion (degrees)
-     */
-    public float getMotionAngle()
-    {
-        return velocityVec.angle();
     }
 
     // ----------------------------------------------

@@ -1,4 +1,4 @@
-package com.ee;
+package com.ee.pacman;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -13,7 +13,7 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 
 public class PacmanGame extends ScreenAdapter {
     private Stage stage;
-    private Player player;
+    private PacmanPlayer player;
     private Pellet[][] pellets;
     private int pelletsLeft;
 
@@ -27,7 +27,7 @@ public class PacmanGame extends ScreenAdapter {
         Gdx.input.setInputProcessor(stage);
 
         // Create player
-        player = new Player(5 * TILE_SIZE, 5 * TILE_SIZE);
+        player = new PacmanPlayer(5 * TILE_SIZE, 5 * TILE_SIZE);
         stage.addActor(player);
 
         // Create pellets
